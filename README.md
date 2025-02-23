@@ -1,0 +1,1 @@
+## This is Potato leaf disease detection app created using React native.
