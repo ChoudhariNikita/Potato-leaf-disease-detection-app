@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Base circle background -->
+  <circle cx="100" cy="100" r="90" fill="#f0fdf4" />
+  
+  <!-- Leaf shape -->
+  <path d="M100 40 
+           C130 40, 160 70, 160 110
+           C160 150, 130 180, 100 180
+           C70 180, 40 150, 40 110
+           C40 70, 70 40, 100 40
+           Z" 
+        fill="#16a34a" />
+  
+  <!-- Inner scan lines representing technology -->
+  <path d="M70 110 L130 110" 
+        stroke="#dcfce7" 
+        stroke-width="8" 
+        stroke-linecap="round" />
+  
+  <path d="M85 90 L115 90" 
+        stroke="#dcfce7" 
+        stroke-width="8" 
+        stroke-linecap="round" />
+  
+  <path d="M85 130 L115 130" 
+        stroke="#dcfce7" 
+        stroke-width="8" 
+        stroke-linecap="round" />
+  
+  <!-- Stem -->
+  <path d="M100 140 L100 170" 
+        stroke="#15803d" 
+        stroke-width="12" 
+        stroke-linecap="round" />
+  
+  <!-- Center circle -->
+  <circle cx="100" cy="110" r="25" fill="#22c55e" />
+  
+  <!-- Camera lens effect -->
+  <circle cx="100" cy="110" r="15" fill="#86efac" />
+  <circle cx="90" cy="100" r="5" fill="#ffffff" opacity="0.6" />
+</svg>
