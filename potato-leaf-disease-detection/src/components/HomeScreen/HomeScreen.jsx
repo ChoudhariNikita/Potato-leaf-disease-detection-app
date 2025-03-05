@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { User } from 'lucide-react-native';
-import Navbar from '../components/Navbar';
-import globalStyles, { colors, spacing } from '../styles/globalStyles';
+import Navbar from '../Navbar/Navbar';
+import globalStyles, { colors, spacing } from '../../styles/globalStyles';
 
 const HomeScreen = ({ navigation }) => {
   return (

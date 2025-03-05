@@ -3,12 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Import screens
-import WelcomeScreen from './components/WelcomeScreen';
-import LoginScreen from './components/LoginScreen';
-import HomeScreen from './components/HomeScreen';
-import CaptureScreen from './components/CaptureScreen';
-import DiseaseInfoScreen from './components/DiseaseInfoScreen';
-import ChatbotScreen from './components/ChatbotScreen';
+import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
+import LoginScreen from './components/LoginScreen/LoginScreen';
+import HomeScreen from './components/HomeScreen/HomeScreen';
+import CaptureScreen from './components/CaptureScreen/CaptureScreen';
+import DiseaseInfoScreen from './components/DiseaseInfoScreen/DiseaseInfoScreen';
+import ChatbotScreen from './components/ChatbotScreen/ChatbotScreen';
 
 // Create stack navigator
 const Stack = createStackNavigator();

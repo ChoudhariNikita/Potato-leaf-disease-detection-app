@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
-import globalStyles, { spacing } from '../styles/globalStyles';
+import globalStyles, { spacing } from '../../styles/globalStyles';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');

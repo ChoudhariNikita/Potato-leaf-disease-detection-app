@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, SafeAreaView } from 'react-native';
-import globalStyles, { spacing, colors } from '../styles/globalStyles';
-import Navbar from '../components/Navbar';
+import globalStyles, { spacing, colors } from '../../styles/globalStyles';
+import Navbar from '../Navbar/Navbar';
 
 const DiseaseInfoScreen = ({ route, navigation }) => {
   // In a real app, you'd get this from the route params

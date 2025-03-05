@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Camera, Book, MessageSquare, Play, Globe, Phone } from 'lucide-react-native';
-import globalStyles, { colors } from '../styles/globalStyles';
+import globalStyles, { colors } from '../../styles/globalStyles';
 
 const Navbar = ({ navigation, activeRoute }) => {
   const navItems = [

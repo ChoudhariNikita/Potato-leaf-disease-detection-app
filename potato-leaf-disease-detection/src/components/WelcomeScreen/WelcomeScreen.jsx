@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import globalStyles, { spacing } from '../styles/globalStyles';
+import globalStyles, { spacing } from '../../styles/globalStyles';
 import { useState } from 'react';
 
 const WelcomeScreen = ({ navigation }) => {
@@ -11,7 +11,7 @@ const WelcomeScreen = ({ navigation }) => {
     <SafeAreaView style={globalStyles.container}>
       <View style={[globalStyles.centeredContainer, { paddingHorizontal: spacing.xl }]}>
         <Image 
-          source={require('../assets/icon.png')} 
+          source={require('../../assets/icon.png')} 
           style={[globalStyles.logo, { width: 150, height: 150 }]} 
           resizeMode="contain" // Update here
         />
