@@ -1,6 +1,6 @@
-# PlantHealth - Potato Leaf Disease Detection App
+# LeafShield - Potato Leaf Disease Detection App
 
-PlantHealth is a mobile application built with React Native and Expo that helps farmers and agricultural professionals detect diseases in potato leaves using image recognition technology.
+LeafShield is a mobile application built with React Native and Expo that helps farmers and agricultural professionals detect diseases in potato leaves using image recognition technology.
 
 ## Features
 
