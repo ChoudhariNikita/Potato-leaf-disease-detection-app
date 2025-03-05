@@ -9,7 +9,7 @@ const LoginScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={globalStyles.container}>
       <View style={[globalStyles.centeredContainer, { padding: spacing.md }]}>
-        <Text style={globalStyles.title}>Login to PlantHealth</Text>
+        <Text style={globalStyles.title}>Login to LeafShield</Text>
         
         <TextInput 
           value={email}

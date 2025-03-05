@@ -8,6 +8,7 @@ import LoginScreen from './components/LoginScreen';
 import HomeScreen from './components/HomeScreen';
 import CaptureScreen from './components/CaptureScreen';
 import DiseaseInfoScreen from './components/DiseaseInfoScreen';
+import ChatbotScreen from './components/ChatbotScreen';
 
 // Create stack navigator
 const Stack = createStackNavigator();
@@ -26,11 +27,11 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Capture" component={CaptureScreen} />
         <Stack.Screen name="Info" component={DiseaseInfoScreen} />
+        <Stack.Screen name="Chat" component={ChatbotScreen} />
         {/* Add placeholder screens for the other navbar items */}
-        <Stack.Screen name="Chat" component={PlaceholderScreen} />
         <Stack.Screen name="Learn" component={PlaceholderScreen} />
         <Stack.Screen name="Translate" component={PlaceholderScreen} />
-        <Stack.Screen name="Doctor" component={PlaceholderScreen} />
+        <Stack.Screen name="Consult" component={PlaceholderScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

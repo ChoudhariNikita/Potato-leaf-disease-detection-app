@@ -10,7 +10,7 @@ const Navbar = ({ navigation, activeRoute }) => {
     { name: 'Chat', icon: MessageSquare, route: 'Chat' },
     { name: 'Learn', icon: Play, route: 'Learn' },
     { name: 'Translate', icon: Globe, route: 'Translate' },
-    { name: 'Doctor', icon: Phone, route: 'Doctor' }
+    { name: 'Consult', icon: Phone, route: 'Consult' }
   ];
 
   return (

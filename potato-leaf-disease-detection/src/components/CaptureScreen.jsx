@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, SafeAreaView, Text } from 'react-native';
-import { Camera } from 'lucide-react-native';
+import { Camera, Upload } from 'lucide-react-native';
 import globalStyles, { colors, spacing } from '../styles/globalStyles';
 import Navbar from '../components/Navbar';
 
@@ -38,6 +38,34 @@ const CaptureScreen = ({ navigation }) => {
         <Text style={[globalStyles.subtitle, { marginTop: spacing.lg }]}>
           Position the leaf in the center of the frame and tap the button to capture
         </Text>
+        
+        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: spacing.lg }}>
+          <TouchableOpacity 
+            style={{ 
+              padding: spacing.sm, 
+              backgroundColor: colors.primary, 
+              borderRadius: 24, 
+              marginRight: spacing.sm,
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}
+          >
+            <Upload size={20} color={colors.white} style={{ marginRight: 4 }} />
+            <Text style={{ color: colors.white }}>Upload</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity 
+            style={{ 
+              padding: spacing.sm, 
+              backgroundColor: colors.primary, 
+              borderRadius: 24,
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}
+          >
+            <Text style={{ color: colors.white }}>Gallery</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       
       <Navbar navigation={navigation} activeRoute="Capture" />

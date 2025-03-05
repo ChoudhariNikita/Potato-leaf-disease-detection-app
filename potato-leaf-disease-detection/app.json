@@ -23,6 +23,10 @@
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
+    },
+    "extra": {
+      "GEMINI_API_KEY": "AIzaSyDapatmpT3cJ4-T87t2hd9nacK89hbdF-0",
+      "GEMINI_API_URL": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
     }
   }
 }

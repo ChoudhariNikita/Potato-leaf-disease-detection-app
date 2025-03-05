@@ -12,10 +12,11 @@ const WelcomeScreen = ({ navigation }) => {
       <View style={[globalStyles.centeredContainer, { paddingHorizontal: spacing.xl }]}>
         <Image 
           source={require('../assets/icon.png')} 
-          style={globalStyles.logo} 
+          style={[globalStyles.logo, { width: 150, height: 150 }]} 
+          resizeMode="contain" // Update here
         />
         
-        <Text style={globalStyles.title}>Welcome to PlantHealth</Text>
+        <Text style={globalStyles.title}>Welcome to LeafShield</Text>
         <Text style={globalStyles.subtitle}>
           Instantly diagnose and receive treatment advice for potato leaf diseases
         </Text>
