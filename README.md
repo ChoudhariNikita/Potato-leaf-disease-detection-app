@@ -33,7 +33,14 @@ cd potato-leaf-disease-detection
 npm install
 ```
 
-3. Start the development server:
+3. Create a `.env` file by copying the `.env.example` file:
+```bash
+cp .env.example .env
+```
+
+4. Update the `.env` file with your configuration settings.
+
+5. Start the development server:
 ```bash
 npx expo start
 ```

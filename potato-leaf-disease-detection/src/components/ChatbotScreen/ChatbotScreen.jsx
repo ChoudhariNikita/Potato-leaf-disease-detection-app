@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, Animated, Easing } from 'react-native';
-import globalStyles from '../../styles/globalStyles';
 import styles from './styles';
 import { generateContent } from '../../utils/api';
 
@@ -27,13 +26,13 @@ const ChatbotScreen = () => {
             toValue: 1.5,
             duration: 500,
             easing: Easing.linear,
-            useNativeDriver: false,
+            useNativeDriver: true,
           }),
           Animated.timing(dotScale, {
             toValue: 1,
             duration: 500,
             easing: Easing.linear,
-            useNativeDriver: false,
+            useNativeDriver: true,
           }),
         ])
       ).start();
@@ -68,31 +67,25 @@ const ChatbotScreen = () => {
     }
   };
 
-  const handleKeyPress = ({ nativeEvent }) => {
-    if (nativeEvent.key === 'Enter') {
-      handleSend();
-    }
-  };
-
   const renderItem = ({ item }) => (
     <View style={[
-      styles.messageContainer,
-      item.sender === 'user' ? styles.userMessage : styles.botMessage
+      styles.messageContainer, 
+      item.sender === 'user' && styles.userMessageContainer
     ]}>
       <Text style={styles.messageText}>{item.text}</Text>
     </View>
   );
 
   const renderHeader = () => (
-    <View style={styles.headerContainer}>
+    <View style={styles.header}>
       <Text style={styles.headerText}>Today</Text>
     </View>
   );
 
   const renderFooter = () => (
     loading ? (
-      <View style={styles.footerContainer}>
-        <Animated.Text style={[styles.footerText, { transform: [{ scale: dotScale }] }]}>
+      <View style={styles.footer}>
+        <Animated.Text style={[styles.typingIndicator, { transform: [{ scale: dotScale }] }]}>
           ...
         </Animated.Text>
       </View>
@@ -100,31 +93,30 @@ const ChatbotScreen = () => {
   );
 
   return (
-    <SafeAreaView style={globalStyles.container}>
-      <View style={styles.chatContainer}>
-        <FlatList 
-          data={messages}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.flatListContent}
-          ListHeaderComponent={renderHeader}
-          ListFooterComponent={renderFooter}
+    <SafeAreaView style={styles.container}>
+      <FlatList 
+        data={messages}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.contentContainer}
+        ListHeaderComponent={renderHeader}
+        ListFooterComponent={renderFooter}
+      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          value={input}
+          onChangeText={setInput}
+          placeholder="Type a message..."
+          returnKeyType="send"
+          onSubmitEditing={handleSend}
+          style={styles.input}
         />
-        <View style={styles.inputContainer}>
-          <TextInput 
-            value={input}
-            onChangeText={setInput}
-            placeholder="Type a message..."
-            onKeyPress={handleKeyPress}
-            style={styles.input}
-          />
-          <TouchableOpacity 
-            onPress={handleSend}
-            style={styles.sendButton}
-          >
-            <Text style={styles.sendButtonText}>Send</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity 
+          onPress={handleSend}
+          style={styles.sendButton}
+        >
+          <Text style={styles.sendButtonText}>Send</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

@@ -1,51 +1,49 @@
 import { StyleSheet } from 'react-native';
-import { colors, spacing } from '../../styles/globalStyles';
+import { colors, spacing, typography } from '../../styles/globalStyles';
 
 export default StyleSheet.create({
-  chatContainer: {
+  container: {
     flex: 1,
     padding: spacing.md,
   },
   messageContainer: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.secondary,
     padding: spacing.sm,
     borderRadius: 8,
     marginVertical: spacing.xs,
     maxWidth: '80%',
     marginHorizontal: spacing.md,
   },
-  userMessage: {
+  userMessageContainer: {
     alignSelf: 'flex-end',
     backgroundColor: colors.primary,
-  },
-  botMessage: {
-    alignSelf: 'flex-start',
-    backgroundColor: colors.secondary,
   },
   messageText: {
     color: colors.white,
   },
-  headerContainer: {
+  header: {
     alignItems: 'center',
     marginVertical: spacing.md,
     backgroundColor: colors.background,
-    borderColor: colors.border,
+    borderColor: colors.lightGray,
     borderWidth: 1,
     borderRadius: 8,
     padding: spacing.sm,
   },
   headerText: {
-    fontSize: 16,
-    color: colors.text,
+    fontSize: typography.fontSizes.medium,
+    color: colors.black,
   },
-  footerContainer: {
+  footer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: spacing.md,
     marginHorizontal: spacing.md,
   },
-  footerText: {
-    color: colors.text,
-    fontSize: 18,
+  typingIndicator: {
+    color: colors.black,
+    fontSize: typography.fontSizes.large,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -55,7 +53,7 @@ export default StyleSheet.create({
   input: {
     flex: 1,
     padding: spacing.sm,
-    borderColor: colors.border,
+    borderColor: colors.lightGray,
     borderWidth: 1,
     borderRadius: 8,
     marginRight: spacing.sm,
@@ -68,7 +66,7 @@ export default StyleSheet.create({
   sendButtonText: {
     color: colors.white,
   },
-  flatListContent: {
+  contentContainer: {
     paddingBottom: spacing.lg,
   },
 });
