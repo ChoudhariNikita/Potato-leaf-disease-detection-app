@@ -16,6 +16,7 @@ import {
 import { generateContent } from '../../utils/api';
 import Navbar from '../Navbar/Navbar';
 import styles from './ChatbotScreenStyles';
+import { CHATBOT_SCREEN } from '../../utils/constants';
 
 const ChatbotScreen = ({ username, navigation }) => {
   const [messages, setMessages] = useState([]);
@@ -27,7 +28,7 @@ const ChatbotScreen = ({ username, navigation }) => {
   useEffect(() => {
     const initialMessage = {
       id: Date.now().toString(),
-      text: `Hi ${username}! How can I help you today?`,
+      text: CHATBOT_SCREEN.INITIAL_MESSAGE.replace('{username}', username),
       sender: 'bot',
       timestamp: new Date(),
     };
@@ -161,8 +162,8 @@ const ChatbotScreen = ({ username, navigation }) => {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       
       <View style={styles.header}>
-        <Text style={styles.title}>Chatbot</Text>
-        <Text style={styles.subtitle}>Ask me anything!</Text>
+        <Text style={styles.title}>{CHATBOT_SCREEN.TITLE}</Text>
+        <Text style={styles.subtitle}>{CHATBOT_SCREEN.SUBTITLE}</Text>
         <Text style={styles.username}>{username}</Text>
       </View>
       
@@ -198,7 +199,7 @@ const ChatbotScreen = ({ username, navigation }) => {
             <TextInput
               value={input}
               onChangeText={setInput}
-              placeholder="Type a message..."
+              placeholder={CHATBOT_SCREEN.PLACEHOLDER}
               style={styles.input}
               onKeyPress={handleKeyPress}
               multiline={false}
@@ -209,7 +210,7 @@ const ChatbotScreen = ({ username, navigation }) => {
               onPress={handleSend}
               activeOpacity={0.7}
             >
-              <Text style={styles.sendButtonText}>Send</Text>
+              <Text style={styles.sendButtonText}>{CHATBOT_SCREEN.SEND_BUTTON}</Text>
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>

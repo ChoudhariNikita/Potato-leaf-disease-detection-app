@@ -11,10 +11,10 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import styles from './WelcomeScreenStyles';
 import { colors } from '../../styles/globalStyles'; // Import colors
+import { WELCOME_SCREEN } from '../../utils/constants';
 
 const WelcomeScreen = ({ navigation }) => {
   const [language, setLanguage] = useState('english');
-  const appVersion = "1.0.0";
 
   return (
     <SafeAreaView style={styles.container}>
@@ -45,7 +45,7 @@ const WelcomeScreen = ({ navigation }) => {
         style={styles.logo}
         resizeMode="contain"
       />
-      <Text style={styles.title}>Welcome to PlantHealth</Text>
+      <Text style={styles.title}>{WELCOME_SCREEN.TITLE}</Text>
       
       {/* Buttons */}
       <View style={styles.buttonContainer}>
@@ -54,7 +54,7 @@ const WelcomeScreen = ({ navigation }) => {
           onPress={() => navigation.navigate('Login')}
           activeOpacity={0.8}
         >
-          <Text style={styles.buttonText}>Sign Up / Login</Text>
+          <Text style={styles.buttonText}>{WELCOME_SCREEN.SIGN_UP_LOGIN}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
@@ -62,13 +62,13 @@ const WelcomeScreen = ({ navigation }) => {
           onPress={() => navigation.navigate('GuestLogin')}
           activeOpacity={0.6}
         >
-          <Text style={styles.secondaryButtonText}>Continue as Guest</Text>
+          <Text style={styles.secondaryButtonText}>{WELCOME_SCREEN.CONTINUE_AS_GUEST}</Text>
         </TouchableOpacity>
       </View>
       
       {/* Footer with version */}
       <View style={styles.footer}>
-        <Text style={styles.version}>Version {appVersion}</Text>
+        <Text style={styles.version}>{WELCOME_SCREEN.VERSION}</Text>
       </View>
     </SafeAreaView>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import styles from './LoginScreenStyles';
+import { LOGIN_SCREEN } from '../../utils/constants';
 
 const LoginScreen = ({ navigation, setIsLoggedIn, setUsername }) => {
   const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ const LoginScreen = ({ navigation, setIsLoggedIn, setUsername }) => {
       setUsername('Nikita');
       navigation.navigate('Home');
     } else {
-      alert('Invalid credentials');
+      alert(LOGIN_SCREEN.INVALID_CREDENTIALS);
     }
   };
 
@@ -25,11 +26,11 @@ const LoginScreen = ({ navigation, setIsLoggedIn, setUsername }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Image source={require('../../assets/icon.png')} style={styles.logo} />
-      <Text style={styles.title}>Login to PlantHealth</Text>
+      <Text style={styles.title}>{LOGIN_SCREEN.TITLE}</Text>
       <TextInput
         value={email}
         onChangeText={setEmail}
-        placeholder="Email"
+        placeholder={LOGIN_SCREEN.EMAIL_PLACEHOLDER}
         keyboardType="email-address"
         autoCapitalize="none"
         style={styles.input}
@@ -38,19 +39,19 @@ const LoginScreen = ({ navigation, setIsLoggedIn, setUsername }) => {
       <TextInput
         value={password}
         onChangeText={setPassword}
-        placeholder="Password"
+        placeholder={LOGIN_SCREEN.PASSWORD_PLACEHOLDER}
         secureTextEntry
         style={styles.input}
         onKeyPress={handleKeyPress}
       />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>{LOGIN_SCREEN.LOGIN_BUTTON}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.secondaryButton}>
-        <Text style={styles.secondaryButtonText}>Continue with Google</Text>
+        <Text style={styles.secondaryButtonText}>{LOGIN_SCREEN.CONTINUE_WITH_GOOGLE}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.skipButton} onPress={() => navigation.navigate('GuestLogin')}>
-        <Text style={styles.skipButtonText}>Skip & Continue as Guest</Text>
+        <Text style={styles.skipButtonText}>{LOGIN_SCREEN.SKIP_CONTINUE_AS_GUEST}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
