@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, Animated, Easing } from 'react-native';
-import styles from './styles';
+import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, Animated, Easing, ScrollView } from 'react-native';
 import { generateContent } from '../../utils/api';
+import styles from './ChatbotScreenStyles';
 
 const ChatbotScreen = () => {
   const [messages, setMessages] = useState([]);
@@ -43,78 +43,60 @@ const ChatbotScreen = () => {
 
   const handleSend = async () => {
     if (input.trim()) {
-      setMessages([...messages, { id: Date.now().toString(), text: input, sender: 'user' }]);
+      const userMessage = { id: Date.now().toString(), text: input, sender: 'user' };
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
       setInput('');
       Keyboard.dismiss();
       setLoading(true);
 
       try {
         const response = await generateContent(input);
-        const botMessage = response?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.';
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { id: (Date.now() + 1).toString(), text: botMessage, sender: 'bot' },
-        ]);
+        console.log('API response:', response); // Log the response data
+        if (response && response.candidates && response.candidates.length > 0) {
+          const botMessage = { id: Date.now().toString(), text: response.candidates[0].content.parts[0].text, sender: 'bot' };
+          setMessages((prevMessages) => [...prevMessages, botMessage]);
+        } else {
+          console.error('Invalid response from API');
+        }
       } catch (error) {
-        console.error('Error getting response from API:', error);
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { id: (Date.now() + 1).toString(), text: 'Error generating response from API.', sender: 'bot' },
-        ]);
+        console.error('Error generating content:', error);
       } finally {
         setLoading(false);
       }
     }
   };
 
-  const renderItem = ({ item }) => (
-    <View style={[
-      styles.messageContainer, 
-      item.sender === 'user' && styles.userMessageContainer
-    ]}>
+  const renderMessage = ({ item }) => (
+    <View style={[styles.messageContainer, item.sender === 'user' ? styles.userMessage : styles.botMessage]}>
       <Text style={styles.messageText}>{item.text}</Text>
     </View>
   );
 
-  const renderHeader = () => (
-    <View style={styles.header}>
-      <Text style={styles.headerText}>Today</Text>
-    </View>
-  );
-
-  const renderFooter = () => (
-    loading ? (
-      <View style={styles.footer}>
-        <Animated.Text style={[styles.typingIndicator, { transform: [{ scale: dotScale }] }]}>
-          ...
-        </Animated.Text>
-      </View>
-    ) : null
-  );
-
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList 
+      <Text style={styles.dateText}>{new Date().toLocaleDateString()}</Text>
+      <FlatList
         data={messages}
-        renderItem={renderItem}
+        renderItem={renderMessage}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.contentContainer}
-        ListHeaderComponent={renderHeader}
-        ListFooterComponent={renderFooter}
+        contentContainerStyle={styles.messagesContainer}
+        style={styles.flatList}
       />
+      {loading && (
+        <View style={styles.loadingContainer}>
+          <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
+          <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
+          <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
+        </View>
+      )}
       <View style={styles.inputContainer}>
         <TextInput
           value={input}
           onChangeText={setInput}
           placeholder="Type a message..."
-          returnKeyType="send"
-          onSubmitEditing={handleSend}
           style={styles.input}
         />
-        <TouchableOpacity 
-          onPress={handleSend}
-          style={styles.sendButton}
-        >
+        <TouchableOpacity style={styles.sendButton} onPress={handleSend}>
           <Text style={styles.sendButtonText}>Send</Text>
         </TouchableOpacity>
       </View>

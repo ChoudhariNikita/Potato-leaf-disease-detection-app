@@ -2,26 +2,27 @@ import React from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { User } from 'lucide-react-native';
 import Navbar from '../Navbar/Navbar';
-import globalStyles, { colors, spacing } from '../../styles/globalStyles';
+import styles from './HomeScreenStyles';
 
 const HomeScreen = ({ navigation }) => {
+  const isLoggedIn = true;
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
-      <View style={globalStyles.container}>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={globalStyles.title}>Welcome to LeafShield</Text>
-          <Text style={globalStyles.subtitle}>
-            Instantly diagnose and receive treatment advice for potato leaf diseases
-          </Text>
-        </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <User size={24} color={styles.userIcon.color} />
+        <Text style={styles.username}>Username</Text>
       </View>
-      
+      <View style={styles.cameraContainer}>
+        <TouchableOpacity style={styles.captureButton}>
+          <Text style={styles.captureButtonText}>Capture</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.carouselContainer}>
+        <Text style={styles.carouselTitle}>Previously Captured Images</Text>
+        {/* Add carousel component here */}
+      </View>
       <Navbar navigation={navigation} activeRoute="Home" />
-      
-      <View style={{ position: 'absolute', top: spacing.md, right: spacing.md, flexDirection: 'row', alignItems: 'center' }}>
-        <User size={24} color={colors.primary} />
-        <Text style={{ marginLeft: spacing.sm, color: colors.primary }}>Username</Text>
-      </View>
     </SafeAreaView>
   );
 };
