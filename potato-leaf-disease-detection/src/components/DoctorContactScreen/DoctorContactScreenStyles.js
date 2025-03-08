@@ -26,13 +26,14 @@ export default StyleSheet.create({
     fontSize: 16,
     color: colors.black,
     lineHeight: 24,
+    marginBottom: spacing.sm,
   },
   button: {
     backgroundColor: colors.primary,
     padding: spacing.md,
     borderRadius: 24,
     alignItems: 'center',
-    marginTop: spacing.md,
+    justifyContent: 'center',
   },
   buttonText: {
     color: colors.white,

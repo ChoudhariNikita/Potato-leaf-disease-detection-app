@@ -6,16 +6,21 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: spacing.md,
+  },
   dateText: {
-    textAlign: 'center',
-    marginVertical: spacing.md,
     fontSize: 16,
     color: colors.primary,
   },
-  flatList: {
-    flex: 1,
+  username: {
+    fontSize: 16,
+    color: colors.primary,
   },
-  messagesContainer: {
+  scrollView: {
+    flexGrow: 1,
     padding: spacing.md,
   },
   messageContainer: {

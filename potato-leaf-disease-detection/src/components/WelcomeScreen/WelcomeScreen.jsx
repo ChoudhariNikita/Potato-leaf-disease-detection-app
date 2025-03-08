@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, SafeAreaView, Picker } from 'react-native';
 import styles from './WelcomeScreenStyles';
 
@@ -13,15 +13,17 @@ const WelcomeScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}>Sign Up / Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('GuestLogin')}>
           <Text style={styles.secondaryButtonText}>Continue as Guest</Text>
         </TouchableOpacity>
       </View>
-      <Picker selectedValue={language} onValueChange={(itemValue) => setLanguage(itemValue)} style={styles.picker}>
-        <Picker.Item label="English" value="english" />
-        <Picker.Item label="Español" value="espanol" />
-        <Picker.Item label="हिंदी" value="hindi" />
-      </Picker>
+      <View style={styles.pickerContainer}>
+        <Picker selectedValue={language} onValueChange={(itemValue) => setLanguage(itemValue)} style={styles.picker}>
+          <Picker.Item label="English" value="english" />
+          <Picker.Item label="Español" value="espanol" />
+          <Picker.Item label="हिंदी" value="hindi" />
+        </Picker>
+      </View>
     </SafeAreaView>
   );
 };

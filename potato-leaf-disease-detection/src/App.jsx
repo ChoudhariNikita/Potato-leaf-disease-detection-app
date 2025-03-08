@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 // Import screens
 import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
@@ -9,11 +10,15 @@ import HomeScreen from './components/HomeScreen/HomeScreen';
 import CaptureScreen from './components/CaptureScreen/CaptureScreen';
 import DiseaseInfoScreen from './components/DiseaseInfoScreen/DiseaseInfoScreen';
 import ChatbotScreen from './components/ChatbotScreen/ChatbotScreen';
+import GuestLoginScreen from './components/GuestLoginScreen/GuestLoginScreen';
 
 // Create stack navigator
 const Stack = createStackNavigator();
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+
   return (
     <NavigationContainer>
       <Stack.Navigator 
@@ -23,12 +28,20 @@ const App = () => {
         }}
       >
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login">
+          {props => <LoginScreen {...props} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
+        </Stack.Screen>
+        <Stack.Screen name="GuestLogin">
+          {props => <GuestLoginScreen {...props} setUsername={setUsername} />}
+        </Stack.Screen>
+        <Stack.Screen name="Home">
+          {props => <HomeScreen {...props} isLoggedIn={isLoggedIn} username={username} />}
+        </Stack.Screen>
         <Stack.Screen name="Capture" component={CaptureScreen} />
         <Stack.Screen name="Info" component={DiseaseInfoScreen} />
-        <Stack.Screen name="Chat" component={ChatbotScreen} />
-        {/* Add placeholder screens for the other navbar items */}
+        <Stack.Screen name="Chat">
+          {props => <ChatbotScreen {...props} username={username} />}
+        </Stack.Screen>
         <Stack.Screen name="Learn" component={PlaceholderScreen} />
         <Stack.Screen name="Translate" component={PlaceholderScreen} />
         <Stack.Screen name="Consult" component={PlaceholderScreen} />

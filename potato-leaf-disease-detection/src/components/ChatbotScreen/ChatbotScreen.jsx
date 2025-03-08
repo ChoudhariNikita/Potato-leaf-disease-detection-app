@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, Animated, Easing, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, Keyboard, Animated, Easing } from 'react-native';
 import { generateContent } from '../../utils/api';
+import Navbar from '../Navbar/Navbar';
 import styles from './ChatbotScreenStyles';
 
-const ChatbotScreen = () => {
+const ChatbotScreen = ({ username, navigation }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -12,7 +13,7 @@ const ChatbotScreen = () => {
   useEffect(() => {
     const initialMessage = {
       id: Date.now().toString(),
-      text: 'Hi there! How can I help you today?',
+      text: `Hi ${username}! How can I help you today?`,
       sender: 'bot',
     };
     setMessages([initialMessage]);
@@ -66,6 +67,12 @@ const ChatbotScreen = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.nativeEvent.key === 'Enter') {
+      handleSend();
+    }
+  };
+
   const renderMessage = ({ item }) => (
     <View style={[styles.messageContainer, item.sender === 'user' ? styles.userMessage : styles.botMessage]}>
       <Text style={styles.messageText}>{item.text}</Text>
@@ -74,32 +81,33 @@ const ChatbotScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.dateText}>{new Date().toLocaleDateString()}</Text>
-      <FlatList
-        data={messages}
-        renderItem={renderMessage}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.messagesContainer}
-        style={styles.flatList}
-      />
-      {loading && (
-        <View style={styles.loadingContainer}>
-          <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
-          <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
-          <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
-        </View>
-      )}
+      <View style={styles.header}>
+        <Text style={styles.dateText}>{new Date().toLocaleDateString()}</Text>
+        <Text style={styles.username}>{username}</Text>
+      </View>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        {messages.map((message) => renderMessage({ item: message }))}
+        {loading && (
+          <View style={styles.loadingContainer}>
+            <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
+            <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
+            <Animated.View style={[styles.loadingDot, { transform: [{ scale: dotScale }] }]} />
+          </View>
+        )}
+      </ScrollView>
       <View style={styles.inputContainer}>
         <TextInput
           value={input}
           onChangeText={setInput}
           placeholder="Type a message..."
           style={styles.input}
+          onKeyPress={handleKeyPress}
         />
         <TouchableOpacity style={styles.sendButton} onPress={handleSend}>
           <Text style={styles.sendButtonText}>Send</Text>
         </TouchableOpacity>
       </View>
+      <Navbar navigation={navigation} activeRoute="Chat" isLoggedIn={true} />
     </SafeAreaView>
   );
 };

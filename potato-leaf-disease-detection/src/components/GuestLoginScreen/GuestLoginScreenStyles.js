@@ -9,20 +9,20 @@ export default StyleSheet.create({
     backgroundColor: colors.background,
     padding: spacing.md,
   },
-  logo: {
-    width: 150,
-    height: 150,
-    marginBottom: spacing.lg,
-  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: colors.primary,
-    marginBottom: spacing.md,
+    marginBottom: spacing.lg,
   },
-  buttonContainer: {
-    width: '100%',
-    alignItems: 'center',
+  input: {
+    width: '80%',
+    padding: spacing.md,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: colors.secondary,
+    backgroundColor: colors.white,
+    marginBottom: spacing.md,
   },
   button: {
     backgroundColor: colors.primary,
@@ -36,28 +36,5 @@ export default StyleSheet.create({
     color: colors.white,
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  secondaryButton: {
-    backgroundColor: colors.secondary,
-    padding: spacing.md,
-    borderRadius: 24,
-    alignItems: 'center',
-    width: '80%',
-  },
-  secondaryButtonText: {
-    color: colors.white,
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  pickerContainer: {
-    width: '80%',
-    marginTop: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.primary,
-    borderRadius: 24,
-    backgroundColor: colors.white,
-  },
-  picker: {
-    width: '100%',
   },
 });

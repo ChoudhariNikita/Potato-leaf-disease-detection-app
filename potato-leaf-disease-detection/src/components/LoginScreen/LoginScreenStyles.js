@@ -9,6 +9,11 @@ export default StyleSheet.create({
     backgroundColor: colors.background,
     padding: spacing.md,
   },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: spacing.lg,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',

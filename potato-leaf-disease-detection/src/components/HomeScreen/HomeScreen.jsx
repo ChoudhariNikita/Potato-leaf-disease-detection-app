@@ -4,25 +4,20 @@ import { User } from 'lucide-react-native';
 import Navbar from '../Navbar/Navbar';
 import styles from './HomeScreenStyles';
 
-const HomeScreen = ({ navigation }) => {
-  const isLoggedIn = true;
-
+const HomeScreen = ({ navigation, isLoggedIn, username }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <User size={24} color={styles.userIcon.color} />
-        <Text style={styles.username}>Username</Text>
+        <Text style={styles.username}>{username || 'Username'}</Text>
       </View>
       <View style={styles.cameraContainer}>
-        <TouchableOpacity style={styles.captureButton}>
-          <Text style={styles.captureButtonText}>Capture</Text>
-        </TouchableOpacity>
+        <Text style={styles.welcomeMessage}>Hello, {username || 'Username'}!</Text>
+        <Text style={styles.additionalMessage}>Welcome to PlantHealth.</Text>
+        <Text style={styles.motto}>Detecting plant diseases with ease.</Text>
+        <Text style={styles.additionalMessage}>Use the capture button to take a photo of a potato leaf.</Text>
       </View>
-      <View style={styles.carouselContainer}>
-        <Text style={styles.carouselTitle}>Previously Captured Images</Text>
-        {/* Add carousel component here */}
-      </View>
-      <Navbar navigation={navigation} activeRoute="Home" />
+      <Navbar navigation={navigation} activeRoute="Home" isLoggedIn={isLoggedIn} />
     </SafeAreaView>
   );
 };
