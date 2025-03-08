@@ -9,6 +9,12 @@ const GuestLoginScreen = ({ navigation, setUsername }) => {
     setUsername(name);
     navigation.navigate('Home', { isLoggedIn: false });
   };
+  
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleContinue();
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -18,6 +24,7 @@ const GuestLoginScreen = ({ navigation, setUsername }) => {
         onChangeText={setName}
         placeholder="Name"
         style={styles.input}
+        onKeyPress={handleKeyPress}
       />
       <TouchableOpacity style={styles.button} onPress={handleContinue}>
         <Text style={styles.buttonText}>Continue</Text>

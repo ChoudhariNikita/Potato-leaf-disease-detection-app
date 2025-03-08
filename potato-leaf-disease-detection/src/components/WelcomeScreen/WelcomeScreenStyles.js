@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { colors, spacing } from '../../styles/globalStyles';
+
+const { width } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -9,16 +11,39 @@ export default StyleSheet.create({
     backgroundColor: colors.background,
     padding: spacing.md,
   },
+  header: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 50 : 30,
+    right: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  pickerContainer: {
+    width: 110,
+    borderWidth: 0.5,
+    borderColor: colors.primary,
+    borderRadius: 8,
+    backgroundColor: colors.white,
+    overflow: 'hidden',
+  },
+  picker: {
+    width: '100%',
+    height: 36,
+    color: colors.primary,
+    fontSize: 14,
+  },
   logo: {
-    width: 150,
-    height: 150,
+    width: width * 0.2, // Adjust width to make the logo smaller
+    height: width * 0.2, // Adjust height to make the logo smaller
+    borderRadius: width * 0.120, // Adjust border radius accordingly
     marginBottom: spacing.lg,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: '700',
     color: colors.primary,
-    marginBottom: spacing.md,
+    marginBottom: spacing.lg,
+    textAlign: 'center',
   },
   buttonContainer: {
     width: '100%',
@@ -26,38 +51,41 @@ export default StyleSheet.create({
   },
   button: {
     backgroundColor: colors.primary,
-    padding: spacing.md,
-    borderRadius: 24,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 12,
     alignItems: 'center',
     marginBottom: spacing.md,
-    width: '80%',
+    width: '70%',
+    elevation: 2,
   },
   buttonText: {
     color: colors.white,
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
   secondaryButton: {
-    backgroundColor: colors.secondary,
-    padding: spacing.md,
-    borderRadius: 24,
+    backgroundColor: 'transparent',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: colors.secondary,
     alignItems: 'center',
-    width: '80%',
+    width: '70%',
   },
   secondaryButtonText: {
-    color: colors.white,
+    color: colors.secondary,
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
-  pickerContainer: {
-    width: '80%',
-    marginTop: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.primary,
-    borderRadius: 24,
-    backgroundColor: colors.white,
+  footer: {
+    position: 'absolute',
+    bottom: 30,
+    alignItems: 'center',
   },
-  picker: {
-    width: '100%',
-  },
+  version: {
+    color: colors.textLight,
+    fontSize: 12,
+  }
 });
