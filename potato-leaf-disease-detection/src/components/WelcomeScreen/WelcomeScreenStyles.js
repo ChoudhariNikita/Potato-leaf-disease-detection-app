@@ -33,9 +33,9 @@ export default StyleSheet.create({
     fontSize: 14,
   },
   logo: {
-    width: width * 0.2, // Adjust width to make the logo smaller
-    height: width * 0.2, // Adjust height to make the logo smaller
-    borderRadius: width * 0.120, // Adjust border radius accordingly
+    width: width * 0.3,
+    height: width * 0.3,
+    borderRadius: width * 0.120, // Make the border radius half of the width/height to make it circular
     marginBottom: spacing.lg,
   },
   title: {

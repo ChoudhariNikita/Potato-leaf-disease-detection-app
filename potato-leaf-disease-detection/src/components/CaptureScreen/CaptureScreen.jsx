@@ -25,7 +25,7 @@ const CaptureScreen = ({ navigation }) => {
           <Text style={styles.galleryButtonText}>Gallery</Text>
         </TouchableOpacity>
       </View>
-      <Navbar navigation={navigation} activeRoute="Capture" />
+      <Navbar navigation={navigation} activeRoute="Capture" isLoggedIn={true} />
     </SafeAreaView>
   );
 };

@@ -16,7 +16,9 @@ import {
 import { generateContent } from '../../utils/api';
 import Navbar from '../Navbar/Navbar';
 import styles from './ChatbotScreenStyles';
+import { User } from 'lucide-react-native';
 import { CHATBOT_SCREEN } from '../../utils/constants';
+import {colors} from "../../styles/globalStyles";
 
 const ChatbotScreen = ({ username, navigation }) => {
   const [messages, setMessages] = useState([]);
@@ -163,8 +165,10 @@ const ChatbotScreen = ({ username, navigation }) => {
       
       <View style={styles.header}>
         <Text style={styles.title}>{CHATBOT_SCREEN.TITLE}</Text>
-        <Text style={styles.subtitle}>{CHATBOT_SCREEN.SUBTITLE}</Text>
-        <Text style={styles.username}>{username}</Text>
+        <View style={styles.usernameContainer}>
+          <User size={24} color={styles.userIcon.color} />
+          <Text style={styles.username}>{username}</Text>
+        </View>
       </View>
       
       <View style={{ flex: 1 }}>

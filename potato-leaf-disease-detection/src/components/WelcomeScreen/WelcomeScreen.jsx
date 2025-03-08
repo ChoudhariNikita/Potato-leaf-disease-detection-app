@@ -40,11 +40,7 @@ const WelcomeScreen = ({ navigation }) => {
       </View>
       
       {/* Main content */}
-      <Image 
-        source={require('../../assets/icon.png')} 
-        style={styles.logo}
-        resizeMode="contain"
-      />
+      <Image source={require('../../assets/icon.png')} style={styles.logo} />
       <Text style={styles.title}>{WELCOME_SCREEN.TITLE}</Text>
       
       {/* Buttons */}

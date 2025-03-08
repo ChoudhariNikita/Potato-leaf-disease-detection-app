@@ -11,8 +11,6 @@ const Navbar = ({ navigation, activeRoute, isLoggedIn }) => {
       ? [
           { name: 'Info', icon: Book, route: 'Info' },
           { name: 'Chat', icon: MessageSquare, route: 'Chat' },
-          { name: 'Learn', icon: Play, route: 'Learn' },
-          { name: 'Translate', icon: Globe, route: 'Translate' },
           { name: 'Logout', icon: LogOut, route: 'Welcome' },
         ]
       : [{ name: 'Logout', icon: LogOut, route: 'Welcome' }]

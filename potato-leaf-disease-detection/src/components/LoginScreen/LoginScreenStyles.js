@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { colors, spacing } from '../../styles/globalStyles';
+
+const { width } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -10,15 +12,17 @@ export default StyleSheet.create({
     padding: spacing.md,
   },
   logo: {
-    width: 150,
-    height: 150,
+    width: width * 0.2, // Adjust width to make the logo smaller
+    height: width * 0.2, // Adjust height to make the logo smaller
+    borderRadius: width * 0.120, // Adjust border radius accordingly
     marginBottom: spacing.lg,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: '700',
     color: colors.primary,
     marginBottom: spacing.lg,
+    textAlign: 'center',
   },
   input: {
     width: '80%',

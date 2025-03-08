@@ -24,6 +24,10 @@ export default StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1,
   },
+  usernameContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   dateText: {
     fontSize: 14,
     color: colors.textLight,
@@ -33,6 +37,7 @@ export default StyleSheet.create({
     fontSize: 16,
     color: colors.primary,
     fontWeight: '600',
+    marginLeft: spacing.sm,
   },
   scrollView: {
     flexGrow: 1,
@@ -168,5 +173,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     marginBottom: spacing.sm,
+  },
+  userIcon: {
+    fontSize: 16,
+    color: 'grey',
+    marginLeft: spacing.sm,
   },
 });

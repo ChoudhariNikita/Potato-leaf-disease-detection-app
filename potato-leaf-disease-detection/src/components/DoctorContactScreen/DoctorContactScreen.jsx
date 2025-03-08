@@ -27,7 +27,7 @@ const DoctorContactScreen = ({ navigation }) => {
           </View>
         ))}
       </ScrollView>
-      <Navbar navigation={navigation} activeRoute="Consult" />
+      <Navbar navigation={navigation} activeRoute="Consult" isLoggedIn={true} />      
     </SafeAreaView>
   );
 };
