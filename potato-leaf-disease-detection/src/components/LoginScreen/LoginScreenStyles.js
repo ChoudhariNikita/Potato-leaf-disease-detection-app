@@ -12,8 +12,8 @@ export default StyleSheet.create({
     padding: spacing.md,
   },
   logo: {
-    width: width * 0.2, // Adjust width to make the logo smaller
-    height: width * 0.2, // Adjust height to make the logo smaller
+    width: width * 0.5,
+    height: width * 0.5,
     borderRadius: width * 0.120, // Adjust border radius accordingly
     marginBottom: spacing.lg,
   },
