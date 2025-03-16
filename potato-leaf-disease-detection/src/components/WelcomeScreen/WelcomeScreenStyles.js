@@ -33,10 +33,10 @@ export default StyleSheet.create({
     fontSize: 14,
   },
   logo: {
-    width: width * 0.3,
-    height: width * 0.3,
+    width: width * 0.2,
+    height: width * 0.2,
     borderRadius: width * 0.120, // Make the border radius half of the width/height to make it circular
-    marginBottom: spacing.lg,
+    marginBottom: spacing.sl,
   },
   title: {
     fontSize: 24,
